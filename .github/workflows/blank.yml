@@ -43,6 +43,8 @@ jobs:
         with:
           name: artifacts
           path: /home/runner/work/Test_private_repo/Test_private_repo/
+        env:
+         PAT: ${{ secrets.PAT }}
 #           repository: SAURABH-BIRAMWAR/upload_artifact_private_repository 
 #           ref: main
 #           token: ${{ secrets.PAT }}        
