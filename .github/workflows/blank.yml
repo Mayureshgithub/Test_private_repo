@@ -4,8 +4,12 @@ name: run the workflow
 
 # Controls when the workflow will run
 on:
-  repository_dispatch:
-    types: [my-event, my-event1, my-event2]
+  workflow_run:
+    workflows: ["Build and Deploy to Sandbox"]
+    types:
+      - completed
+#   repository_dispatch:
+#     types: [my-event, my-event1, my-event2]
 jobs:
   build:
     name: run-workflow
@@ -24,8 +28,8 @@ jobs:
     
       - uses: actions/download-artifact@master
         with:
-          name: artifacts
-          path: target/*.jar
+          name: my-app
+          path: artifacts/my-app.jar
           
       - name: print trigger details
         run: |
