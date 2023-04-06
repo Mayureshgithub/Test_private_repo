@@ -28,8 +28,8 @@ jobs:
     
       - uses: actions/download-artifact@master
         with:
-          name: my-app
-          path: artifacts/my-app.jar
+          name: artifacts
+          path: artifacts_dir/artifacts.jar
           
       - name: print trigger details
         run: |
