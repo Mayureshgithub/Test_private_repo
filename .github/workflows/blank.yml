@@ -21,26 +21,30 @@ jobs:
         with:
           fetch-depth: 0
 
-#       - uses: actions/cache@v1
-#         with:
-#           path: ~/.m2/repository
-#           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-#           restore-keys: |
-#             ${{ runner.os }}-maven-
-      
-      - name: Download artifact
-        uses: actions/download-artifact@v2
+      - uses: actions/cache@v1
         with:
-          name: my-app
-          path: artifacts/my-app.jar
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      
+#       - name: Download artifact
+#         uses: actions/download-artifact@v2
+#         with:
+#           name: my-app
+#           path: artifacts/my-app.jar
       
     
-#       - uses: actions/download-artifact@master
-#         with:
-#           name: artifacts
-#           path: artifacts_dir/artifacts.jar
+      - uses: actions/download-artifact@master
+        with:
+          name: artifacts
+          path: download/
+      - name: List downloaded artifact
+        run: |
+          ls download/
+          ls download/*.jar
           
-#       - name: print trigger details
-#         run: |
-#           echo ${{ github.event.client_payload.github.action }}
-#           echo ${{ github.event.client_payload.github.actor }}
+      - name: print trigger details
+        run: |
+          echo ${{ github.event.client_payload.github.action }}
+          echo ${{ github.event.client_payload.github.actor }}
