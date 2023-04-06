@@ -37,7 +37,7 @@ jobs:
       - name: Present working directory
         run: pwd
     
-      - uses: actions/download-artifact@master
+      - uses: actions/download-artifact@v2
         with:
           name: artifacts
           path: /home/runner/work/Test_private_repo/Test_private_repo/
