@@ -5,7 +5,7 @@ name: run the workflow
 # Controls when the workflow will run
 on:
   repository_dispatch:
-    types: [my-event]
+    types: [my-event, my-event1]
 jobs:
   build:
     name: run-workflow
