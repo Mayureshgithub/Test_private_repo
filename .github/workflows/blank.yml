@@ -116,8 +116,11 @@ jobs:
                https://api.github.com/repos/SAURABH-BIRAMWAR/upload_artifact_private_repository/actions/artifacts/${LATEST_ARTIFACT_ID}/zip \
                --output artifact.zip
                
-          # Unzip the downloaded artifact
+          echo{"Unzip the downloaded artifact"}
           unzip -q *.zip       
+          
+          echo{"Delete the zip artifact"}
+          rm *.zip
                
       - name: List Files
         run: |  
