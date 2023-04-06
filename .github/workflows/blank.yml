@@ -4,13 +4,16 @@ name: run the workflow
 
 # Controls when the workflow will run
 on:
-  workflow_run:
-    workflows: ["Build and Deploy to Sandbox"]
-    types:
-      - completed
+ pull_request:
+    branches: [ main ]
       
-  repository_dispatch:
-    types: [my-event, my-event1, my-event2]
+#   workflow_run:
+#     workflows: ["Build and Deploy to Sandbox"]
+#     types:
+#       - completed
+      
+#   repository_dispatch:
+#     types: [my-event, my-event1, my-event2]
 
 jobs:
   build:
@@ -42,7 +45,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: artifacts
-          repository: SAURABH-BIRAMWAR/upload_artifact_private_repository
+#           repository: SAURABH-BIRAMWAR/upload_artifact_private_repository
           path: /home/runner/work/Test_private_repo/Test_private_repo/
         env:
          PAT: ${{ secrets.PAT }}
