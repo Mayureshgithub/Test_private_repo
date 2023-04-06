@@ -5,7 +5,7 @@ name: run the workflow
 # Controls when the workflow will run
 on:
   repository_dispatch:
-    types: [my-event, my-event1]
+    types: [my-event, my-event1, my-event2]
 jobs:
   build:
     name: run-workflow
@@ -14,6 +14,18 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - uses: actions/cache@v1
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+    
+      - uses: actions/download-artifact@master
+        with:
+          name: artifacts
+          
       - name: print trigger details
         run: |
           echo ${{ github.event.client_payload.github.action }}
