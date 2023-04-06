@@ -8,8 +8,10 @@ on:
     workflows: ["Build and Deploy to Sandbox"]
     types:
       - completed
+      
 #   repository_dispatch:
 #     types: [my-event, my-event1, my-event2]
+
 jobs:
   build:
     name: run-workflow
@@ -25,11 +27,18 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-    
-      - uses: actions/download-artifact@master
+      
+      - name: Download artifact
+        uses: actions/download-artifact@v2
         with:
-          name: artifacts
-          path: artifacts_dir/artifacts.jar
+          name: my-app
+          path: artifacts/my-app.jar
+      
+    
+#       - uses: actions/download-artifact@master
+#         with:
+#           name: artifacts
+#           path: artifacts_dir/artifacts.jar
           
       - name: print trigger details
         run: |
