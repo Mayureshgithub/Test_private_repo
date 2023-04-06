@@ -40,11 +40,14 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: artifacts
-          path: /home/runner/work/upload_artifact_private_repository/upload_artifact_private_repository/target/*.jar
+          path: /home/runner/work/Test_private_repo/Test_private_repo/
+          repository: SAURABH-BIRAMWAR/upload_artifact_private_repository 
+          ref: main
+          token: ${{ secrets.PAT }}        
           
       - name: List downloaded artifact
         run: |
-          ls /home/runner/work/upload_artifact_private_repository/upload_artifact_private_repository/target/*
+          ls /home/runner/work/Test_private_repo/Test_private_repo/
       #    ls target/*.jar
           
       - name: print trigger details
