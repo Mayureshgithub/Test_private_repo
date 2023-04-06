@@ -9,8 +9,8 @@ on:
     types:
       - completed
       
-#   repository_dispatch:
-#     types: [my-event, my-event1, my-event2]
+  repository_dispatch:
+    types: [my-event, my-event1, my-event2]
 
 jobs:
   build:
