@@ -38,7 +38,7 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: artifacts
-          path: target/*.jar
+          path: artifacts.jar
           
       - name: List downloaded artifact
         run: |
