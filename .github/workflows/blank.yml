@@ -21,12 +21,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/cache@v1
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+#       - uses: actions/cache@v1
+#         with:
+#           path: ~/.m2/repository
+#           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+#           restore-keys: |
+#             ${{ runner.os }}-maven-
       
       - name: Download artifact
         uses: actions/download-artifact@v2
@@ -40,7 +40,7 @@ jobs:
 #           name: artifacts
 #           path: artifacts_dir/artifacts.jar
           
-      - name: print trigger details
-        run: |
-          echo ${{ github.event.client_payload.github.action }}
-          echo ${{ github.event.client_payload.github.actor }}
+#       - name: print trigger details
+#         run: |
+#           echo ${{ github.event.client_payload.github.action }}
+#           echo ${{ github.event.client_payload.github.actor }}
