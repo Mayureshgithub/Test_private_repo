@@ -94,7 +94,7 @@ jobs:
             pwd
             ls -la
             
-      - name: Get an artifact
+      - name: Latest Artifact
         run: |
       
           # Get the list of artifacts for the repository
@@ -105,6 +105,8 @@ jobs:
 
           # Extract the latest artifact ID from the list
           LATEST_ARTIFACT_ID=$(echo "$ARTIFACTS" | jq -r '.artifacts[0].id')
+          
+          echo $LATEST_ARTIFACT_ID
 
           # Download the latest artifact
           curl -L \
