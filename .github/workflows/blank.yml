@@ -37,15 +37,15 @@ jobs:
       - name: Present working directory
         run: pwd
     
-#       - uses: actions/download-artifact@master
-#         with:
-#           name: artifacts
-#           path: artifacts.jar
+      - uses: actions/download-artifact@master
+        with:
+          name: artifacts
+          path: /home/runner/work/upload_artifact_private_repository/upload_artifact_private_repository/target/*.jar
           
       - name: List downloaded artifact
         run: |
-          ls target/
-          ls target/*.jar
+          ls /home/runner/work/upload_artifact_private_repository/upload_artifact_private_repository/target/*
+      #    ls target/*.jar
           
       - name: print trigger details
         run: |
