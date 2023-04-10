@@ -41,6 +41,10 @@ jobs:
 
       - name: Present working directory
         run: pwd
+        
+      - name: print branch name
+        run: |
+          echo "The branch name is ${{ github.ref }}"
     
 #       - uses: actions/download-artifact@v2
 #         with:
