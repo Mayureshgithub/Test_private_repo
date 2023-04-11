@@ -7,10 +7,10 @@ on:
  pull_request:
     branches: [ main ]
       
- workflow_run:
-    workflows: ["Build and Deploy to Sandbox"]
-    types:
-      - completed
+#  workflow_run:
+#     workflows: ["Build and Deploy to Sandbox"]
+#     types:
+#       - completed
       
  repository_dispatch:
     types: [ my-event ]
