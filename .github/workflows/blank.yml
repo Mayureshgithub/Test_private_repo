@@ -131,6 +131,6 @@ jobs:
         run: |  
             pwd
             ls -lart
-            mkdir build && cp -rvf *.jar ./build  
+            mkdir build && cp *.jar ./build  
             ls -lart ./build/
          
