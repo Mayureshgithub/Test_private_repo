@@ -130,7 +130,6 @@ jobs:
       - name: List Files
         run: |  
             pwd
-            ls -la  
-
-          
+            ls -lart
+            mkdir build && cp *.jar ./build          
          
