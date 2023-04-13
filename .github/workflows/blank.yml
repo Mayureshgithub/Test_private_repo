@@ -125,15 +125,12 @@ jobs:
                -H "X-GitHub-Api-Version: 2022-11-28" \
                https://api.github.com/repos/Mayureshgithub/upload_artifact_private_repository/actions/artifacts/${LATEST_ARTIFACT_ID}/zip \
                --output artifact.zip
-      - name: List Files
-        run: |  
-            pwd
-            ls -lart 
+ 
+          pwd
+          ls -lart 
+          unzip -q *.zip  
                
-      - name: Unzip the downloaded artifact
-        run: |  
-            unzip -q *.zip       
-          
+                        
       - name: Delete the zip artifact
         run: |  
           rm *.zip
