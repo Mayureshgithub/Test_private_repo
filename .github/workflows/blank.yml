@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT_TOKEN_TEST }}
-          repository: /Mayureshgithub/upload_artifact_private_repository
-          ref: ${{ github.event.client_payload.workflow_file, github.event.client_payload.ref }}
+#         with:
+#           token: ${{ secrets.PAT_TOKEN_TEST }}
+#           repository: /Mayureshgithub/upload_artifact_private_repository
+#           ref: ${{ github.event.client_payload.workflow_file, github.event.client_payload.ref }}
    
         #with:
          # #repository: Mayureshgithub/upload_artifact_private_repository 
