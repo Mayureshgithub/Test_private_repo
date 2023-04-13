@@ -19,8 +19,8 @@ jobs:
       - uses: actions/checkout@v2 
         with:
          repository: Mayureshgithub/upload_artifact_private_repository 
-         ref: main
-         token: ${{ secrets.PAT }} 
+         ref: new_branch
+         token: ${{ secrets.PAT_TOKEN_TEST }} 
 
 #       - uses: actions/cache@v1
 #         with:
