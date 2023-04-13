@@ -122,12 +122,13 @@ jobs:
 #           token: ${{ secrets.PAT_TOKEN_TEST }}
 #           artifact_id: ${{ steps.get_artifact_id.outputs.artifact_id }}
       
-                     
-      - name: Latest Artifact
+      - name: list_files
         run: |
-          list_files
-          ls -latr
-        
+            ped
+            ls -la
+            
+      - name: Latest Artifact
+        run: |    
       
           # Get the list of artifacts for the repository
           ARTIFACTS=$(curl -s -H "Accept: application/vnd.github+json" \
@@ -148,6 +149,8 @@ jobs:
                https://api.github.com/repos/Mayureshgithub/upload_artifact_private_repository/actions/artifacts/${LATEST_ARTIFACT_ID}/zip \
                --output artifact.zip
                
+          # list_files
+          ls -latr     
                 
           # Unzip the downloaded artifact
           unzip -q *.zip       
