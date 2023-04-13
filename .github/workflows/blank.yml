@@ -4,15 +4,11 @@ name: run the workflow
 
 # Controls when the workflow will run
 on:
-#  push:
-#     branches: [ new_branch ]
+  workflow_dispatch:
+  push:
+   branches: [ new_branch2 ]
       
-#  workflow_run:
-#     workflows: ["Build and Deploy to Sandbox_new"]
-#     types:
-#       - completed
-      
- repository_dispatch:
+  repository_dispatch:
     types: [trigger-workflow]
 
 jobs:
