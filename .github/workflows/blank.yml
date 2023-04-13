@@ -54,9 +54,10 @@ jobs:
         with:
           name: artifacts
           repository: SAURABH-BIRAMWAR/upload_artifact_private_repository
+          ref: new_branch
           path: /home/runner/work/Test_private_repo/Test_private_repo/
         env:
-         PAT: ${{ secrets.PAT_TOKEN_TEST }}
+         token: ${{ secrets.PAT_TOKEN_TEST }}
 #         repository: SAURABH-BIRAMWAR/upload_artifact_private_repository 
 #          ref: main
 #          token: ${{ secrets.PAT }}        
