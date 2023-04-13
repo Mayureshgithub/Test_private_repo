@@ -4,13 +4,13 @@ name: run the workflow
 
 # Controls when the workflow will run
 on:
-#  pull_request:
-#     branches: [ main ]
+ pull_request:
+    branches: [ new_branch ]
       
-#  workflow_run:
-#     workflows: ["Build and Deploy to Sandbox"]
-#     types:
-#       - completed
+ workflow_run:
+    workflows: ["Build and Deploy to Sandbox_new"]
+    types:
+      - completed
       
  repository_dispatch:
     types: [new_branch]
