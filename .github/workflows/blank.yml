@@ -1,138 +1,25 @@
-# This is a basic workflow to help you get started with Actions
+name: Test Private Repo
 
-name: run the workflow
-
-# Controls when the workflow will run
 on:
-#  push:
-#     branches: [ new_branch ]
-      
-#  workflow_run:
-#     workflows: ["Build and Deploy to Sandbox_new"]
-#     types:
-#       - completed
-      
- repository_dispatch:
-    types: [trigger-workflow1]
+  release:
+    types: [published]
 
 jobs:
   build:
-    name: run-workflow
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get latest release
+        id: latest_release
+        uses: gr2m/get-latest-release@v1
         with:
-          ref: ${{ github.event.client_payload.ref }}
-        #with:
-         # repository: Mayureshgithub/upload_artifact_private_repository 
-         # ref: main
-          #token: ${{ secrets.PAT }} 
+          owner: Mayureshgithub
+          repo: Test_private_repo
 
-#       - uses: actions/cache@v1
-#         with:
-#           path: ~/.m2/repository
-#           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-#           restore-keys: |
-#             ${{ runner.os }}-maven-
-      
-#       - name: Download artifact
-#         uses: actions/download-artifact@v2
-#         with:
-#           name: my-app
-#           path: artifacts/my-app.jar
-
-      - name: Present working directory
-        run: pwd
-        
-      - name: print branch name
-        run: |
-          echo "The branch name is ${{ github.ref }}"
-    
-#       - uses: actions/download-artifact@v2
-#         with:
-#           name: artifacts
-# #           repository: SAURABH-BIRAMWAR/upload_artifact_private_repository
-#           path: /home/runner/work/Test_private_repo/Test_private_repo/
-#         env:
-#          PAT: ${{ secrets.PAT }}
-# #           repository: SAURABH-BIRAMWAR/upload_artifact_private_repository 
-# #           ref: main
-# #           token: ${{ secrets.PAT }}        
-          
-      - name: List downloaded artifact
-        run: |
-          ls /home/runner/work/Test_private_repo/Test_private_repo/
-      #    ls target/*.jar
-          
-      - name: print trigger details
-        run: |
-          echo ${{ github.event.client_payload.github.action }}
-          echo ${{ github.event.client_payload.github.actor }}
-          echo "The branch name is ${{ github.ref }}"
-       
-      - name: List artifact           
-        run: |
-          
-            curl -L \
-               -H "Accept: application/vnd.github+json" \
-               -H "Authorization: Bearer ${{ secrets.PAT_TOKEN_TEST }}"\
-               -H "X-GitHub-Api-Version: 2022-11-28" \
-                https://api.github.com/repos/Mayureshgithub/upload_artifact_private_repository/actions/artifacts
-            
-#       - name: Get an artifact
-#         run: |
-#             curl -L \
-#                -H "Accept: application/vnd.github+json" \
-#                -H "Authorization: Bearer ${{ secrets.MY_SECRET }}"\
-#                -H "X-GitHub-Api-Version: 2022-11-28" \
-#                https://api.github.com/repos/SAURABH-BIRAMWAR/upload_artifact_private_repository/actions/artifacts/635688298
-               
-#       - name: Download an artifact
-#         run: |  
-#             curl -L \
-#                -H "Accept: application/vnd.github+json" \
-#                -H "Authorization: Bearer ${{ secrets.MY_SECRET }}"\
-#                -H "X-GitHub-Api-Version: 2022-11-28" \
-#                https://api.github.com/repos/SAURABH-BIRAMWAR/upload_artifact_private_repository/actions/artifacts/635688298/zip \
-#                --output artifact.zip
-               
-      - name: List Files
-        run: |  
-            pwd
-            ls -la
-            
-      - name: Latest Artifact
-        run: |
-      
-          # Get the list of artifacts for the repository
-          ARTIFACTS=$(curl -s -H "Accept: application/vnd.github+json" \
-              -H "Authorization: Bearer ${{ secrets.PAT_TOKEN_TEST }}" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              https://api.github.com/repos/Mayureshgithub/upload_artifact_private_repository/actions/artifacts)
-
-          # Extract the latest artifact ID from the list
-          LATEST_ARTIFACT_ID=$(echo "$ARTIFACTS" | jq -r '.artifacts[0].id')
-          
-          echo $LATEST_ARTIFACT_ID
-
-          # Download the latest artifact
-          curl -L \
-               -H "Accept: application/vnd.github+json" \
-               -H "Authorization: Bearer ${{ secrets.PAT_TOKEN_TEST }}" \
-               -H "X-GitHub-Api-Version: 2022-11-28" \
-               https://api.github.com/repos/Mayureshgithub/upload_artifact_private_repository/actions/artifacts/${LATEST_ARTIFACT_ID}/zip \
-               --output artifact.zip
-               
-          # Unzip the downloaded artifact
-          unzip -q *.zip       
-          
-          # Delete the zip artifact
-          rm *.zip
-               
-      - name: List Files
-        run: |  
-            pwd
-            ls -lart
-            mkdir build && cp *.jar ./build  
-            ls -lart ./build/
-         
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+          path: .
