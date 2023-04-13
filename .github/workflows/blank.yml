@@ -124,7 +124,7 @@ jobs:
       
       - name: list_files
         run: |
-            ped
+            pwd
             ls -la
             
       - name: Latest Artifact
