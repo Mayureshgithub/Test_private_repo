@@ -133,6 +133,9 @@ jobs:
           
           # Delete the zip artifact
           rm *.zip
+          
+          # list_files
+          ls -latr
                                
       - name: List Files
         run: |  
