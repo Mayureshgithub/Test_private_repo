@@ -13,8 +13,8 @@ on:
 #     types:
 #       - completed
       
-#  repository_dispatch:
-#     types: [ event-name_my, trigger-workflow2 ]
+ repository_dispatch:
+    types: [ event-name_my, trigger-workflow2 ]
 
 jobs:
   build:
