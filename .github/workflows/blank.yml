@@ -4,8 +4,8 @@ name: run the workflow
 
 # Controls when the workflow will run
 on:
- pull_request:
-    branches: [ main ]
+#  pull_request:
+#     branches: [ main ]
       
 #  workflow_run:
 #     workflows: ["Build and Deploy to Sandbox"]
@@ -13,7 +13,7 @@ on:
 #       - completed
       
  repository_dispatch:
-    types: [ my-event ]
+    types: [ event-name ]
 
 jobs:
   build:
