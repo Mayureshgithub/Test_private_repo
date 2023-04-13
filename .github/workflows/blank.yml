@@ -21,6 +21,9 @@ jobs:
          repository: Mayureshgithub/upload_artifact_private_repository 
          ref: new_branch
          token: ${{ secrets.PAT_TOKEN_TEST }} 
+      - run: |
+           ls -lart
+           pwd
 
 #       - uses: actions/cache@v1
 #         with:
