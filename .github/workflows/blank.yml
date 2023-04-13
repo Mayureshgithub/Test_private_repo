@@ -117,7 +117,7 @@ jobs:
       - name: Download latest artifact
         uses: actions/download-artifact@v2
         with:
-          name: artifact
+          name: artifacts
           path: .
           token: ${{ secrets.PAT_TOKEN_TEST }}
           artifact_id: ${{ steps.get_artifact_id.outputs.artifact_id }}
