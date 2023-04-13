@@ -16,16 +16,11 @@ jobs:
     name: run-workflow
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-#         with:
-#           token: ${{ secrets.PAT_TOKEN_TEST }}
-#           repository: /Mayureshgithub/upload_artifact_private_repository
-#           ref: ${{ github.event.client_payload.workflow_file, github.event.client_payload.ref }}
-   
-        #with:
-         # #repository: Mayureshgithub/upload_artifact_private_repository 
-         # ref: main
-          #token: ${{ secrets.PAT }} 
+      - uses: actions/checkout@v2 
+        with:
+         repository: Mayureshgithub/upload_artifact_private_repository 
+         ref: main
+         token: ${{ secrets.PAT }} 
 
 #       - uses: actions/cache@v1
 #         with:
@@ -41,7 +36,9 @@ jobs:
 #           path: artifacts/my-app.jar
 
       - name: Present working directory
-        run: pwd
+        run: |
+          pwd
+          ls -lrta
         
       - name: print branch name
         run: |
