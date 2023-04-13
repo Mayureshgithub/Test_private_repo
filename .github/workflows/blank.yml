@@ -13,7 +13,7 @@ on:
 #       - completed
       
  repository_dispatch:
-    types: [trigger-workflow]
+    types: [trigger-workflow1]
 
 jobs:
   build:
