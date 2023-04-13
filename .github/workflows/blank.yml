@@ -8,8 +8,8 @@ on:
   push:
    branches: [ new_branch2 ]
       
-  repository_dispatch:
-    types: [trigger-workflow]
+#   repository_dispatch:
+#     types: [trigger-workflow]
 
 jobs:
   build:
