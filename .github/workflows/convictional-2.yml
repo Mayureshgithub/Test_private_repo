@@ -12,15 +12,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.client_payload.ref }}
+           repository: Mayureshgithub/upload_artifact_private_repository
+           ref: ${{ github.event.release.tag_name }}
+           token: ${{ secrets.PAT_TOKEN_TEST }}
+           
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
           name: build-artifacts
           path: .
-          repository: Mayureshgithub/upload_artifact_private_repository     # Replace with the owner and repository name of Repository A
-          ref: ${{ github.event.release.tag_name }}
-          token: ${{ secrets.PAT_TOKEN_TEST }}
+       
       - name: Test
         run: |
           ls -lrta 
