@@ -2,7 +2,7 @@ name: Test Workflow
 
 on:
   repository_dispatch:
-    types: [test-workflow]
+    types: [trigger-workflow_event]
 
 jobs:
   test:
@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: test
+          ref: ${{ github.event.client_payload.ref }}
       - name: Download build artifacts
         uses: actions/download-artifact@v2
         with:
