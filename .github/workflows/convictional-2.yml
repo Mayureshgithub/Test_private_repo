@@ -93,9 +93,9 @@ jobs:
           echo "Artifact downloaded:  build-artifacts.zip"
           
       - name: Test
-#         run: |
-#           pwd
-#           ls -lrta    
+        run: |
+          pwd
+          ls -lrta    
 
 
 
