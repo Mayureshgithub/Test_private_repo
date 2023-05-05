@@ -4,9 +4,9 @@ name: run the workflow
 
 # Controls when the workflow will run
 on:
-  workflow_dispatch:
-#   push:
-#    branches: [ new_branch2 ]
+#   workflow_dispatch:
+  push:
+   branches: [ new_branch2 ]
       
 #   repository_dispatch:
 #     types: [trigger-workflow]
